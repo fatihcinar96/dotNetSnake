@@ -24,15 +24,18 @@ namespace SnakeApp
             snake.Add(new Coordinate(40, 10));
             snake.Add(new Coordinate(41, 10));
             snake.Add(new Coordinate(42, 10));
+            createSnake snakeCreate = new createSnake();
+            snakeCreate.snakeCreate();
             toEat yemek = new toEat();
             yemek.yemler();
             TimerX time = new TimerX();
             time.setTime();
-            createSnake snakeCreate = new createSnake();
-            snakeCreate.snake();
+            
 
             ControlKeys keyControl = new ControlKeys();
             keyControl.keyControl();
+
+            
         }
         
     }
@@ -98,25 +101,13 @@ namespace SnakeApp
             
             for(int i = 0; i < 10; i++)
             {
-                Console.SetCursorPosition(rnd.Next(0, 60), rnd.Next(2,15 ));
+                Console.SetCursorPosition(rnd.Next(2, 60), rnd.Next(2,15 ));
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write((char)178);
             }
         }
     }
-    class createSnake
-    {
-        public void snake()
-        {
-            Random rnd = new Random();
-
-            Console.SetCursorPosition(rnd.Next(2, 60), rnd.Next(2, 15));
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            String[] snakeArr = new string[] {"---->"};
-            
-            Console.Write("YILANNN");
-        }
-    }
+    
 
     class ControlKeys
     {
@@ -148,5 +139,29 @@ namespace SnakeApp
                 }
             }
         }
+    }
+    class createSnake
+    {
+        public void snakeCreate()
+        {
+            Random rnd = new Random();
+            char ch = '>';
+            Console.SetCursorPosition(rnd.Next(2, 40), rnd.Next(2, 15));
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(ch);
+            ControlKeys controller = new ControlKeys();
+            if (Console.KeyAvailable)
+            {
+                var ckey = Console.ReadKey(true).Key;
+                switch (ckey)
+                {
+                    case ConsoleKey.UpArrow:
+                        Console.SetCursorPosition(Console.WindowWidth + 1, Console.WindowHeight);
+                        Console.Write(ch);
+                        break;
+                }
+            }
+        }
+        
     }
 }
