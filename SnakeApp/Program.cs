@@ -109,11 +109,12 @@ namespace SnakeApp
         public void snake()
         {
             Random rnd = new Random();
+
             Console.SetCursorPosition(rnd.Next(2, 60), rnd.Next(2, 15));
             Console.ForegroundColor = ConsoleColor.Yellow;
             String[] snakeArr = new string[] {"---->"};
             
-            Console.Write(snakeArr[0]);
+            Console.Write("YILANNN");
         }
     }
 
